@@ -1,0 +1,10 @@
+SELECT
+datetime(history_visits.visit_time+978307200, 'unixepoch') AS "Date & Time UTC",
+datetime(history_visits.visit_time+978307200, 'unixepoch', 'localtime') AS "Date & Time CST",
+history_visits.title AS "Page Title",
+case history_visits.load_successful
+when 0 then 'No'
+when 1 then 'Yes'
+else 'Contact Examiner'
+End as 'Page Loaded'
+from history_visits
